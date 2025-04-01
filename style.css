@@ -713,6 +713,7 @@ xclip
 	z-index: 1;
 }
 
+/* 
 .services-inner-box::after{
 	background: rgba(239, 174, 35, 0.95);
 	width: 0px;
@@ -742,6 +743,7 @@ xclip
 .services-inner-box:hover p{
 	color: #ffffff;
 }
+*/
  
 
 .btn-ber{
