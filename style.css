@@ -1048,6 +1048,49 @@ xclip
 }
 
 
+
+/* Book */
+.book-announcement {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+
+
+h2 span {
+    color: #333;
+    font-weight: bold;
+}
+
+p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.preorder-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 20px;
+    background: #0056b3;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.preorder-btn:hover {
+    background: #003f7f;
+}
+
+
+
 /*------------------------------------------------------------------
     PRICING TABLES
 -------------------------------------------------------------------*/
