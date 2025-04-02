@@ -691,37 +691,44 @@ xclip
 
 
 
-.services-inner-box{
-	padding: 15px;
-	background: #ffffff;
-	margin-bottom: 30px;
-	border-radius: 50px 50px 0px 50px;
-	position: relative;
-	transition: all 0.3s ease-in-out 0s;
+.services-inner-box {
+    padding: 10px;
+    background: #ffffff;
+    margin-bottom: 20px;
+    border-radius: 40px 40px 0px 40px;
+    position: relative;
+    transition: all 0.3s ease-in-out 0s;
+    min-height: 250px; /* Reduced height */
 }
-.ser-icon{
-	width: 90px;
-	height: 90px;
-	text-align: center;
-	line-height: 90px;
-	position: relative;
-	z-index: 1;
+
+.ser-icon {
+    width: 70px; /* Reduced size */
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    position: relative;
+    z-index: 1;
 }
-.ser-icon i{
-	font-size: 50px;
-	color: #5D4037;
+
+.ser-icon i {
+    font-size: 40px; /* Smaller icon */
+    color: #5D4037;
 }
-.services-inner-box h2{
-	font-size: 22px;
-	font-weight: 600;
-	position: relative;
-	z-index: 1;
+
+.services-inner-box h2 {
+    font-size: 18px; /* Reduced heading size */
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
 }
-.services-inner-box p{
-	font-size: 14px;
-	position: relative;
-	z-index: 1;
+
+.services-inner-box p {
+    font-size: 12px; /* Smaller paragraph text */
+    position: relative;
+    z-index: 1;
 }
+
+
 
 /* 
 .services-inner-box::after{
