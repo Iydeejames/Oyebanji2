@@ -1680,6 +1680,7 @@ hr.invis1 {
     transform: translateY(10px);
 }
 
+/*
 .gallery-list .gallery-single:hover .img-overlay {
     opacity: 1;
     -webkit-transform: translateY(0);
@@ -1690,7 +1691,7 @@ hr.invis1 {
 	opacity: 1;
 	top: 50%;
 }
-
+*/
 
 .post-box .date{
 	display: inline-block;
