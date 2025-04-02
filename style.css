@@ -1704,27 +1704,34 @@ hr.invis1 {
 	text-align: center;
 }
 
-.post-thumb{
+.post-thumb {
 	position: relative;
 	border-radius: 100px 100px 0px 100px;
 	overflow: hidden;
 }
 
-.post-box{
+.post-thumb img {
+    width: 50%; /* Reduce size by half */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto; /* Center the images */
+    object-fit: cover; /* Ensure consistency */
+}
+
+.post-box {
 	-webkit-box-shadow: 0px 5px 35px 0px rgba(148, 146, 245, 0.15);
 	box-shadow: 0px 5px 35px 0px rgba(148, 146, 245, 0.15);
 	background: #ffffff;
 	border-radius: 100px 100px 0px 0px;
 }
 
-.post-box:hover .post-thumb::before{
+.post-box:hover .post-thumb::before {
 	opacity: .6;
 	-webkit-transform: translateY(0);
 	transform: translateY(0);
 }
 
-
-.post-box .post-thumb::before{
+.post-box .post-thumb::before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -1738,6 +1745,7 @@ hr.invis1 {
 	-webkit-transform: translateY(10px);
 	transform: translateY(10px);
 }
+
 
 .post-info{
 	padding: 0px 15px 40px 15px;
