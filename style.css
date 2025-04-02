@@ -1798,7 +1798,7 @@ hr.invis1 {
 }
 
 .blog-content h4 {
-    color: rgba(138, 130, 130, 0.85);
+    color: rgba(190, 190, 190, 0.85);
     font-weight: bold;
 }
 
@@ -1812,10 +1812,6 @@ hr.invis1 {
     color: white !important; /* Ensures all text is white */
 }
 
-.blog-content h4 {
-    color: rgba(255, 3, 3, 0.85); /* "Stay Tuned!" in red */
-    font-weight: bold;
-}
 
 
 /*------------------------------------------------------------------
