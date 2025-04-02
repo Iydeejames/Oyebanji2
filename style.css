@@ -1786,19 +1786,37 @@ hr.invis1 {
     Blog
 -------------------------------------------------------------------*/
 
-.blog-content {
-    max-width: 600px;
-    margin: 0 auto;
-    font-size: 14px; /* Smaller font */
-    color: #444;
-    line-height: 1.6;
+#blog {
+    background-color: #5D4037; /* Brown background */
+    padding: 50px 0;
+    color: white; /* Makes all text white */
+    text-align: center;
+}
+
+#blog .section-title h3 {
+    color: white !important; /* Forces the title to be white */
 }
 
 .blog-content h4 {
-    margin-top: -5px ;
+    color: rgba(138, 130, 130, 0.85);
     font-weight: bold;
-    color: #007bff; /* Nice blue accent */
 }
+
+.blog-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.blog-content h3,
+.blog-content p {
+    color: white !important; /* Ensures all text is white */
+}
+
+.blog-content h4 {
+    color: rgba(255, 3, 3, 0.85); /* "Stay Tuned!" in red */
+    font-weight: bold;
+}
+
 
 /*------------------------------------------------------------------
     Pricing
