@@ -1077,7 +1077,7 @@ p {
     display: inline-block;
     margin-top: 10px;
     padding: 12px 20px;
-    background: #0056b3;
+    background: rgba(255, 3, 3, 0.85);
     color: white;
     text-decoration: none;
     font-size: 16px;
@@ -1086,7 +1086,7 @@ p {
 }
 
 .preorder-btn:hover {
-    background: #003f7f;
+    background: #5D4037;
 }
 
 
