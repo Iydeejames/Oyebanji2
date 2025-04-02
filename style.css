@@ -678,12 +678,12 @@ xclip
 .right-box-pro::before {
     content: "";
     background: #5D4037; /* Maintain background color */
-    width: 80%; /* Reduce background size */
+    width: 100%; /* Reduce background size */
     height: 100%;
     border-radius: 60px 60px 0px 60px; /* Adjust border radius */
     position: absolute;
-    bottom: -5px; /* Adjust positioning */
-    right: -5px;
+    bottom: -8px; /* Adjust positioning */
+    right: -8px;
     z-index: 0;
 }
 
