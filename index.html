@@ -173,85 +173,119 @@
  </div><!-- end section -->
  
 	
-	<div id="charity" class="section lb">
-		<div class="container">
-			<div class="section-title text-center">
-                <h3>Humanitarian Work</h3>
-                <p>Giving back has always been at the core of what I do. Over the years, I’ve supported causes that are close to my heart, particularly those that empower and uplift communities.
-			<br><b style="color: #5D4037;">Why These Causes Matter:</b>
-               These causes matter to me because I believe in the power of community and the importance of giving people the tools to better their lives. Whether it’s through education or access to reliable energy, these initiatives are a way for me to contribute to meaningful, lasting change.
-
-			 </p>
-            </div><!-- end title -->
-			
-			<div class="gallery-menu row">
-				<div class="col-md-12">
-					<div class="button-group filter-button-group text-center">
-						<button class="active" data-filter="*">All</button>
-						<button data-filter=".gal_a">Back-to-School</button>
-						<button data-filter=".gal_b">Solar Panel</button>
-					</div>
-				</div>
-			</div>
-			
-			<div class="gallery-list row">
-				<div class="col-md-4 col-sm-6 gallery-grid gal_b">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-01.jpg" class="img-fluid" alt="Image">
-						<div class="img-overlay">
-							<a href="uploads/gallery_img-01.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-6 gallery-grid gal_c gal_b">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-02.jpg" class="img-fluid" alt="Image">
-						<div class="img-overlay">
-							<a href="uploads/gallery_img-02.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-6 gallery-grid gal_a gal_c">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-03.jpg" class="img-fluid" alt="Image">
-						<div class="img-overlay">
-							<a href="uploads/gallery_img-03.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-6 gallery-grid gal_b gal_a">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-04.jpg" class="img-fluid" alt="Image">
-						<div class="img-overlay">
-							<a href="uploads/gallery_img-04.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-6 gallery-grid gal_a gal_c">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-05.jpg" class="img-fluid" alt="Image">
-						<div class="img-overlay">
-							<a href="uploads/gallery_img-05.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-6 gallery-grid gal_c ">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-06.jpg" class="img-fluid" alt="Image">
-						<div class="img-overlay">
-							<a href="uploads/gallery_img-06.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			</div>
-		</div>
+ <div id="charity" class="section lb">
+	<div class="container">
+	    <div class="section-title text-center">
+		   <h3>Humanitarian Work</h3>
+		   <p>Giving back has always been at the core of what I do. Over the years, I’ve supported causes that are close to my heart, particularly those that empower and uplift communities.
+			  <br><b style="color: #5D4037;">Why These Causes Matter:</b>
+			  These causes matter to me because I believe in the power of community and the importance of giving people the tools to better their lives. Whether it’s through education or access to reliable energy, these initiatives are a way for me to contribute to meaningful, lasting change.
+		   </p>
+	    </div><!-- end title -->
+ 
+	    <div class="gallery-menu row">
+		   <div class="col-md-12">
+			  <div class="button-group filter-button-group text-center">
+				 <button class="active" data-filter="*" onclick="showDescription('all')">All</button>
+				 <button data-filter=".gal_a" onclick="showDescription('backToSchool')">Back-to-School</button>
+				 <button data-filter=".gal_b" onclick="showDescription('solarPanel')">Solar Panel</button>
+			  </div>
+		   </div>
+	    </div>
+ 
+	    <!-- Description Sections -->
+	    <div id="backToSchool" class="description-box" style="display: none;">
+		   <h4>Back-to-School Donations (USA)</h4>
+		   <p>Every year, I donate back-to-school materials for Black children in the US to ensure they have the tools they need to succeed in their education. For me, it’s about providing opportunities and breaking down barriers. Every child deserves access to quality education, and I’m proud to help in any way I can.</p>
+		   <p>[Insert pictures/videos of donations]</p>
+	    </div>
+ 
+	    <div id="solarPanel" class="description-box" style="display: none;">
+		   <h4>Solar Panel Donations (Nigeria)</h4>
+		   <p>In my community in Nigeria, access to electricity has always been a challenge. To help address this, I donated solar panels to provide much-needed energy to local homes. The goal is to bring sustainable solutions to a community that has long struggled with power shortages, and I hope it inspires others to invest in long-term solutions for Africa.</p>
+		   <p>[Insert pictures/videos of solar panel installation]</p>
+	    </div>
+ 
+	    <div class="gallery-list row">
+		   <div class="col-md-4 col-sm-6 gallery-grid gal_b">
+			  <div class="gallery-single fix">
+				 <img src="uploads/gallery_img-01.jpg" class="img-fluid" alt="Image">
+				 <div class="img-overlay">
+					<a href="uploads/gallery_img-01.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a>
+				 </div>
+			  </div>
+		   </div>
+ 
+		   <div class="col-md-4 col-sm-6 gallery-grid gal_c gal_b">
+			  <div class="gallery-single fix">
+				 <img src="uploads/gallery_img-02.jpg" class="img-fluid" alt="Image">
+				 <div class="img-overlay">
+					<a href="uploads/gallery_img-02.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a>
+				 </div>
+			  </div>
+		   </div>
+ 
+		   <div class="col-md-4 col-sm-6 gallery-grid gal_a gal_c">
+			  <div class="gallery-single fix">
+				 <img src="uploads/gallery_img-03.jpg" class="img-fluid" alt="Image">
+				 <div class="img-overlay">
+					<a href="uploads/gallery_img-03.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a>
+				 </div>
+			  </div>
+		   </div>
+ 
+		   <div class="col-md-4 col-sm-6 gallery-grid gal_b gal_a">
+			  <div class="gallery-single fix">
+				 <img src="uploads/gallery_img-04.jpg" class="img-fluid" alt="Image">
+				 <div class="img-overlay">
+					<a href="uploads/gallery_img-04.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a>
+				 </div>
+			  </div>
+		   </div>
+ 
+		   <div class="col-md-4 col-sm-6 gallery-grid gal_a gal_c">
+			  <div class="gallery-single fix">
+				 <img src="uploads/gallery_img-05.jpg" class="img-fluid" alt="Image">
+				 <div class="img-overlay">
+					<a href="uploads/gallery_img-05.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a>
+				 </div>
+			  </div>
+		   </div>
+ 
+		   <div class="col-md-4 col-sm-6 gallery-grid gal_c ">
+			  <div class="gallery-single fix">
+				 <img src="uploads/gallery_img-06.jpg" class="img-fluid" alt="Image">
+				 <div class="img-overlay">
+					<a href="uploads/gallery_img-06.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a>
+				 </div>
+			  </div>
+		   </div>
+	    </div>
 	</div>
+ </div>
+ 
+ <script>
+	function showDescription(category) {
+	    document.getElementById('backToSchool').style.display = 'none';
+	    document.getElementById('solarPanel').style.display = 'none';
+ 
+	    if (category === 'backToSchool') {
+		   document.getElementById('backToSchool').style.display = 'block';
+	    } else if (category === 'solarPanel') {
+		   document.getElementById('solarPanel').style.display = 'block';
+	    }
+	}
+ </script>
+ 
+ <style>
+	.description-box {
+	    background-color: #f9f9f9;
+	    padding: 15px;
+	    margin-top: 20px;
+	    border-left: 5px solid #5D4037;
+	}
+ </style>
+ 
 	
 
 	<section class="book-announcement">
