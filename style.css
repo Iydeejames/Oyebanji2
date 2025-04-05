@@ -2356,7 +2356,7 @@ select.mobile-device {
 }
 
 .footer-social a:hover {
-    color: #7aff69;
+    color: #cccccc;
     transform: scale(1.1);
 }
 
@@ -2366,7 +2366,7 @@ select.mobile-device {
 }
 
 .footer-bottom a {
-    color: #7aff69;
+    color: #cccccc;
     text-decoration: none;
     font-weight: bold;
 }
