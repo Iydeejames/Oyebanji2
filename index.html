@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
     <!-- Basic -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
- 
-     <!-- Site Metas -->
+
+    <!-- Site Metas -->
     <title>Oyebanji Akins Portfolio</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -26,7 +27,48 @@
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
-	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <script src="js/modernizr.js"></script> <!-- Modernizr -->
+
+    <style>
+        /* Cartoon Style Chat Box */
+        #chatBox {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 200px; /* Smaller width */
+            height: 80px; /* Reduced height */
+            background-color: #fff8e1;
+            border-radius: 15px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            display: block;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            border: 2px solid #e5b073; /* Light brown border */
+            z-index: 9999;
+            animation: bounce 1s infinite; /* Bounce effect */
+        }
+
+        /* Text Style */
+        #chatBox .chatText {
+            font-size: 12px; /* Smaller font */
+            color: #8B4513; /* Brown color */
+            margin: 0;
+            line-height: 1.2; /* Reduced line height to eliminate extra space */
+        }
+
+        /* Bounce Animation */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -39,75 +81,76 @@
     <!-- LOADER -->
     <div id="preloader">
         <div id="main-ld">
-			<div id="loader"></div>  
-		</div>
+            <div id="loader"></div>  
+        </div>
     </div><!-- end loader -->
     <!-- END LOADER -->
-	
+    
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
-			<img class="img-fluid" src="images/logo.png" alt="" />
-		</a>
-      <!-- Menu button -->  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-    
-          <i class="fa fa-bars"></i>
+            <img class="img-fluid" src="images/logo.png" alt="" />
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
         </button>
-	   <div class="collapse navbar-collapse" id="navbarResponsive">
-		<ul class="navbar-nav text-uppercase ml-auto">
-		    <li class="nav-item">
-			   <a class="nav-link js-scroll-trigger active" href="#home">Home</a>
-		    </li>
-		    <li class="nav-item">
-			   <a class="nav-link js-scroll-trigger" href="about.html">About</a>
-		    </li>
-		    <li class="nav-item">
-			   <a class="nav-link js-scroll-trigger" href="projects.html">Projects</a>
-		    </li>
-		    <li class="nav-item">
-			   <a class="nav-link js-scroll-trigger" href="charity.html">Charity</a>
-		    </li>
-		    <li class="nav-item">
-			   <a class="nav-link js-scroll-trigger" href="press.html">Press</a>
-		    </li>
-		    <li class="nav-item">
-			   <a class="nav-link js-scroll-trigger" href="blog.html">Blog</a>
-		    </li>
-		    <li class="nav-item">
-			   <a class="nav-link js-scroll-trigger" href="contact.html">Contact Me</a>
-		    </li>
-		</ul>
-	 </div>
-	 
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger active" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="projects.html">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="charity.html">Charity</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="press.html">Press</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="blog.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="contact.html">Contact Me</a>
+                </li>
+            </ul>
+        </div>
       </div>
     </nav>
-	
-    <section id="home" class="main-banner parallaxie" style="background: url('images/header.jpg')">		<div class="heading">
-			<h1>Hi,</h1>			
-			<h3 class="cd-headline clip is-full-width">
-				<span>I'm Oyebanji Akins, </span>
-				<span class="cd-words-wrapper">
-					<b class="is-visible">A Critic</b>
-					<b>A Media Entrepreneur</b>
-					<b>An Artist Consultant</b>
-					<b>A Media Entrepreneur</b>
-				</span>
-			</h3>
-		</div>
-	</section>
+    
+    <section id="home" class="main-banner parallaxie" style="background: url('images/header.jpg')">        
+        <div class="heading">
+            <h1>Hi,</h1>            
+            <h3 class="cd-headline clip is-full-width">
+                <span>I'm Oyebanji Akins, </span>
+                <span class="cd-words-wrapper">
+                    <b class="is-visible">A Critic</b>
+                    <b>A Media Entrepreneur</b>
+                    <b>An Artist Consultant</b>
+                    <b>A Media Entrepreneur</b>
+                </span>
+            </h3>
+        </div>
+    </section>
 
-
-
+    <!-- Chat Box -->
+    <div id="chatBox">
+        <p class="chatText">From a small town in Nigeria to the heart of global culture.</p>
+    </div>
 
     <!-- ALL JS FILES -->
     <script src="js/all.js"></script>
-	<!-- Camera Slider -->
-	<script src="js/jquery.mobile.customized.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script> 
-	<script src="js/parallaxie.js"></script>
-	<script src="js/headline.js"></script>
-	<!-- Contact form JavaScript -->
+    <!-- Camera Slider -->
+    <script src="js/jquery.mobile.customized.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script> 
+    <script src="js/parallaxie.js"></script>
+    <script src="js/headline.js"></script>
+    <!-- Contact form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>
     <!-- ALL PLUGINS -->
