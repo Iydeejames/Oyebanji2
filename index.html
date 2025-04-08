@@ -2,159 +2,126 @@
 <html lang="en">
 
 <head>
-    <!-- Basic -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oyebanji Akins Portfolio</title>
 
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/custom.css" />
 
-    <!-- Site Metas -->
-    <title>Oyebanji Akins Portfolio</title>  
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <!-- Custom Chat Bubble CSS -->
+  <style>
+    .hero-chatbox {
+      position: absolute;
+      bottom: 6%;
+      left: 5%;
+      background: #ffffff;
+      color: #000000;
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-size: 1rem;
+      max-width: 90%;
+      font-weight: 500;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      display: inline-block;
+    }
 
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    .hero-chatbox::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: #ffffff transparent transparent transparent;
+    }
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
-    <script src="js/modernizr.js"></script>
+    @media (max-width: 768px) {
+      .hero-chatbox {
+        font-size: 0.85rem;
+        padding: 8px 14px;
+        bottom: 4%;
+        left: 4%;
+      }
 
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <style>
-        .catchphrase {
-            position: absolute;
-            bottom: 30px;
-            right: 40px;
-            font-size: 1rem;
-            color: #ffffff;
-            max-width: 280px;
-            text-align: right;
-            font-style: italic;
-            font-weight: 300;
-            line-height: 1.5;
-            opacity: 0;
-            animation: fadeUp 2s ease-out 1.2s forwards;
-        }
-
-        @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .catchphrase {
-                font-size: 0.8rem;
-                right: 20px;
-                bottom: 20px;
-                max-width: 90%;
-                text-align: center;
-                left: 0;
-                margin: 0 auto;
-            }
-        }
-    </style>
+      .hero-chatbox::after {
+        left: 20px;
+        bottom: -8px;
+        border-width: 8px 8px 0;
+      }
+    }
+  </style>
 </head>
 
 <body id="page-top" class="politics_version">
 
-    <!-- LOADER -->
-    <div id="preloader">
-        <div id="main-ld">
-            <div id="loader"></div>  
-        </div>
+  <!-- LOADER -->
+  <div id="preloader">
+    <div id="main-ld">
+      <div id="loader"></div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <img class="img-fluid" src="images/logo.png" alt="" />
+      </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="projects.html">Projects</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="charity.html">Charity</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="press.html">Press</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="contact.html">Contact Me</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="main-banner parallaxie" style="background: url('images/header.jpg'); position: relative;">
+    <div class="heading">
+      <h1>Hi,</h1>
+      <h3 class="cd-headline clip is-full-width">
+        <span>I'm Oyebanji Akins, </span>
+        <span class="cd-words-wrapper">
+          <b class="is-visible">A Critic</b>
+          <b>A Media Entrepreneur</b>
+          <b>An Artist Consultant</b>
+          <b>A Media Entrepreneur</b>
+        </span>
+      </h3>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <img class="img-fluid" src="images/logo.png" alt="" />
-            </a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <i class="fa fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger active" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="projects.html">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="charity.html">Charity</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="press.html">Press</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="contact.html">Contact Me</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Chat-style Catchphrase -->
+    <div class="hero-chatbox">
+      From Nigeria to the world — legacy in motion.
+    </div>
+  </section>
 
-    <!-- Hero Section with Catchphrase -->
-    <section id="home" class="main-banner parallaxie" style="background: url('images/header.jpg'); position: relative;">
-        <div class="heading">
-            <h1>Hi,</h1>			
-            <h3 class="cd-headline clip is-full-width">
-                <span>I'm Oyebanji Akins, </span>
-                <span class="cd-words-wrapper">
-                    <b class="is-visible">A Critic</b>
-                    <b>A Media Entrepreneur</b>
-                    <b>An Artist Consultant</b>
-                    <b>A Media Entrepreneur</b>
-                </span>
-            </h3>
-        </div>
-
-        <!-- Catchphrase -->
-        <div class="catchphrase">
-            From a small town in Nigeria to the heart of global culture.<br>
-            Not just a journey—this is <strong>legacy in motion</strong>.
-        </div>
-    </section>
-
-    <!-- ALL JS FILES -->
-    <script src="js/all.js"></script>
-    <script src="js/jquery.mobile.customized.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script> 
-    <script src="js/parallaxie.js"></script>
-    <script src="js/headline.js"></script>
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/jquery.vide.js"></script>
-
+  <!-- JS FILES -->
+  <script src="js/all.js"></script>
+  <script src="js/jquery.mobile.customized.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/parallaxie.js"></script>
+  <script src="js/headline.js"></script>
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/jquery.vide.js"></script>
 </body>
+
 </html>
