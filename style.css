@@ -763,6 +763,25 @@ xclip
 }
 */
 
+.catchphrase {
+    position: relative; /* Ensure catchphrase stays in place */
+    z-index: 1; /* To keep the text above other elements */
+  }
+  
+  .cd-headline {
+    position: relative; /* Prevents layout shift */
+  }
+  
+  .cd-words-wrapper b {
+    position: absolute; /* Prevents any layout shifts when the b elements change */
+    visibility: hidden; /* Keeps the b tags invisible until they're active */
+  }
+  
+  .cd-words-wrapper b.is-visible {
+    visibility: visible; /* Makes the active b tag visible */
+    position: static; /* Allows it to stay in its normal position */
+  }
+  
 
 .catchphrase {
     color: #fff;
