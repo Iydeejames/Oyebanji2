@@ -764,11 +764,12 @@ xclip
 */
 
 
-.catchphrase{
+.catchphrase {
     color: #fff;
-    font-family: cursive;
+    font-family: 'Brush Script', cursive;
     font-size: small;
-}
+  }
+  
  
 @media (max-width: 768px) {
     .catchphrase {
