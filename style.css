@@ -408,6 +408,22 @@ a img.aligncenter {
 	padding: 20px 0px;
 }
 
+
+/* Default font size for larger screens */
+.heading h3 span {
+    font-size: 1.5rem; /* Adjust the size as needed */
+  }
+  
+  /* Font size for small screens */
+  @media (max-width: 768px) {
+    .heading h3 span {
+      font-size: 0.9rem !important; /* Adjust this size for smaller screens */
+    }
+  }
+  
+
+
+
 .heading h3{
 	color: ffffff;
 }
