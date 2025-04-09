@@ -775,7 +775,7 @@ xclip
  
 @media (max-width: 768px) {
     .catchphrase {
-      font-size: 0.5rem;
+      font-size: 0.4rem;
       padding-left: 1rem !important;
       padding-right: 1rem !important;
       box-sizing: border-box; /* Ensures padding doesn't overflow */
@@ -784,7 +784,7 @@ xclip
   
   @media (max-width: 414px) {
     .catchphrase {
-      font-size: 0.4rem;
+      font-size: 0.3rem;
       padding-left: 1rem !important;
       padding-right: 1rem !important;
       box-sizing: border-box;
