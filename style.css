@@ -784,7 +784,7 @@ xclip
 .catchphrase {
     color: #fff;
     font-family: 'Comfortaa', cursive;
-    font-size: small;
+    font-size: 0.6rem;
     padding: 0 1rem; /* adds space on left/right for mobile */
     box-sizing: border-box; /* ensures padding behaves properly */
   }
@@ -792,7 +792,7 @@ xclip
  
 @media (max-width: 768px) {
     .catchphrase {
-      font-size: 0.4rem;
+      font-size: 0.7rem !important;
       padding-left: 1rem !important;
       padding-right: 1rem !important;
       box-sizing: border-box; /* Ensures padding doesn't overflow */
@@ -801,7 +801,7 @@ xclip
   
   @media (max-width: 414px) {
     .catchphrase {
-      font-size: 0.3rem;
+      font-size: 0.7rem !important;
       padding-left: 1rem !important;
       padding-right: 1rem !important;
       box-sizing: border-box;
