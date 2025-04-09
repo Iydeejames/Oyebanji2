@@ -762,7 +762,32 @@ xclip
 	color: #ffffff;
 }
 */
+
+
+.catchphrase{
+    color: #fff;
+    font-family: cursive;
+    font-size: small;
+}
  
+@media (max-width: 768px) {
+    .catchphrase {
+      font-size: 0.5rem;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+      box-sizing: border-box; /* Ensures padding doesn't overflow */
+    }
+  }
+  
+  @media (max-width: 414px) {
+    .catchphrase {
+      font-size: 0.4rem;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+      box-sizing: border-box;
+    }
+  }
+  
 
 .btn-ber{
 	margin-top: 30px;
