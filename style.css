@@ -766,8 +766,9 @@ xclip
 
 .catchphrase {
     color: #fff;
-    font-family: 'Brush Script', cursive !important;
+    font-family: 'Satisfy', cursive;
     font-size: small;
+    padding: 0 1rem; /* keep that spacing too */
   }
   
  
