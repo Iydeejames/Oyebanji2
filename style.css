@@ -763,26 +763,7 @@ xclip
 }
 */
 
-.cd-words-wrapper {
-    white-space: nowrap; /* Ensures the <b> tags don't break into new lines */
-    overflow: hidden; /* Prevents any overflow caused by long words */
-  }
-  
-  .cd-words-wrapper b {
-    display: inline-block; /* Keeps them on the same line */
-  }
-  
-  .catchphrase {
-    position: relative; /* Ensures catchphrase stays in place */
-    z-index: 1; /* Keeps the catchphrase above other content */
-  }
-  
-  @media (max-width: 768px) {
-    .cd-words-wrapper {
-      white-space: nowrap; /* Still ensures no wrapping on mobile */
-    }
-  }
-  
+
 
 .catchphrase {
     color: #fff;
