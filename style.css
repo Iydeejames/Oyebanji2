@@ -766,7 +766,7 @@ xclip
 
 .catchphrase {
     color: #fff;
-    font-family: 'Brush Script', cursive;
+    font-family: 'Brush Script', cursive !important;
     font-size: small;
   }
   
