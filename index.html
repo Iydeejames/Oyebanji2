@@ -23,15 +23,14 @@
 	  color: #5D4037;
 	  padding: 10px 18px;
 	  border-radius: 20px;
-	  font-size: 1rem;
+	  font-size: 0.9rem; /* Slightly reduced font size */
 	  font-weight: 500;
 	  z-index: 20;
 	  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 	  display: inline-block;
 	  opacity: 0;
-	  transform: translateX(-50%);
 	  animation: slideIn 1s ease forwards 1.2s;
-	  max-width: 85%;
+	  max-width: 90%; /* Slightly increased max-width */
 	  border: 1px solid rgba(0, 0, 0, 0.05);
 	}
    
@@ -55,20 +54,23 @@
    
 	@media (max-width: 768px) {
 	  .hero-chatbox {
-	    font-size: 0.85rem;
+	    font-size: 0.8rem; /* Further reduced font size for mobile */
 	    padding: 8px 14px;
 	    bottom: 4%;
 	    left: 50%;
-	    transform: translateX(-50%); /* Center it on smaller screens */
+	    transform: translateX(-50%); /* Keep it centered on smaller screens */
+	    width: 95%; /* Increased width for mobile */
+	    max-width: 95%; /* Increased max-width */
 	  }
    
 	  .hero-chatbox::after {
-        bottom: -10px;
-        left: 24px;
-        border-width: 10px 10px 0;
-      }
+	    bottom: -10px;
+	    left: 24px;
+	    border-width: 10px 10px 0;
+	  }
 	}
    </style>
+   
    
 </head>
 
