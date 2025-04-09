@@ -417,7 +417,7 @@ a img.aligncenter {
   /* Font size for small screens */
   @media (max-width: 768px) {
     .heading h3 span {
-      font-size: 0.9rem !important; /* Adjust this size for smaller screens */
+      font-size: 1rem !important; /* Adjust this size for smaller screens */
     }
   }
   
