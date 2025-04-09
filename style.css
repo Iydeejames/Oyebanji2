@@ -766,9 +766,10 @@ xclip
 
 .catchphrase {
     color: #fff;
-    font-family: 'Satisfy', cursive;
+    font-family: 'Poppins', sans-serif;
     font-size: small;
-    padding: 0 1rem; /* keep that spacing too */
+    padding: 0 1rem; /* adds space on left/right for mobile */
+    box-sizing: border-box; /* ensures padding behaves properly */
   }
   
  
@@ -2367,7 +2368,7 @@ select.mobile-device {
 }
 
 .footer-text a {
-    color: #7aff69;
+    color: #cccccc;
     font-weight: bold;
 }
 
