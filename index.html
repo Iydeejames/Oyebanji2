@@ -14,59 +14,62 @@
   <link rel="stylesheet" href="css/custom.css" />
 
   <style>
-.hero-chatbox {
-  position: absolute;
-  bottom: 6%;
-  left: 5%;
-  background-color: white !important;  /* Explicit white */
-  color: #5D4037;
-  padding: 10px 18px;
-  border-radius: 20px;
-  font-size: 1rem;
-  font-weight: 500;
-  z-index: 20; /* Make sure it stays above background */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Reduced shadow */
-  display: inline-block;
-  opacity: 0;
-  transform: translateX(-40px);
-  animation: slideIn 1s ease forwards 1.2s;
-  max-width: 85%;
-  border: 1px solid rgba(0, 0, 0, 0.05); /* Optional for clarity */
-}
-
-.hero-chatbox::after {
-  content: "";
-  position: absolute;
-  bottom: -12px;
-  left: 30px;
-  border-width: 12px 12px 0;
-  border-style: solid;
-  border-color: white transparent transparent transparent;
-}
-
-
-    @keyframes slideIn {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero-chatbox {
-        font-size: 0.85rem;
-        padding: 8px 14px;
-        bottom: 4%;
-        left: 4%;
-      }
-
-      .hero-chatbox::after {
+	.hero-chatbox {
+	  position: absolute;
+	  bottom: 6%;
+	  left: 50%;
+	  transform: translateX(-50%); /* Center the chat box horizontally */
+	  background-color: white !important;
+	  color: #5D4037;
+	  padding: 10px 18px;
+	  border-radius: 20px;
+	  font-size: 1rem;
+	  font-weight: 500;
+	  z-index: 20;
+	  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	  display: inline-block;
+	  opacity: 0;
+	  transform: translateX(-50%);
+	  animation: slideIn 1s ease forwards 1.2s;
+	  max-width: 85%;
+	  border: 1px solid rgba(0, 0, 0, 0.05);
+	}
+   
+	/* Adjust the arrow to point to the left */
+	.hero-chatbox::after {
+	  content: "";
+	  position: absolute;
+	  bottom: -12px;
+	  left: 30px; /* Shift arrow to the left of the chatbox */
+	  border-width: 12px 12px 0;
+	  border-style: solid;
+	  border-color: white transparent transparent transparent;
+	}
+   
+	@keyframes slideIn {
+	  to {
+	    opacity: 1;
+	    transform: translateX(-50%); /* Ensure center after animation */
+	  }
+	}
+   
+	@media (max-width: 768px) {
+	  .hero-chatbox {
+	    font-size: 0.85rem;
+	    padding: 8px 14px;
+	    bottom: 4%;
+	    left: 50%;
+	    transform: translateX(-50%); /* Center it on smaller screens */
+	  }
+   
+	  .hero-chatbox::after {
         bottom: -10px;
         left: 24px;
         border-width: 10px 10px 0;
       }
-    }
-  </style>
+	}
+   </style>
+   
 </head>
 
 <body id="page-top" class="politics_version">
