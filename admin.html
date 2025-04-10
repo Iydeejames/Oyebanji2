@@ -55,10 +55,51 @@
       color: #888;
       margin-bottom: 10px;
     }
+
+    /* Modal Styles */
+    .modal-backdrop {
+      z-index: 9999;
+    }
+
+    .modal-content {
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-header {
+      background-color: #5D4037;
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    .modal-body {
+      text-align: center;
+    }
+
+    .modal-footer button {
+      width: 100%;
+    }
   </style>
 </head>
 
 <body>
+  <!-- Modal for Password -->
+  <div class="modal fade show" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel" aria-hidden="true" style="display: block;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="passwordModalLabel">Enter Admin Password</h5>
+        </div>
+        <div class="modal-body">
+          <input type="password" class="form-control" id="password-input" placeholder="Enter Password" autofocus>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" id="submitPassword">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">
@@ -99,79 +140,114 @@
   </div>
 
   <script>
-    const saveToStorage = (key, item) => {
-      const existing = JSON.parse(localStorage.getItem(key) || "[]");
-      existing.push(item);
-      localStorage.setItem(key, JSON.stringify(existing));
+    const requiredPassword = "akins2025";
+
+    // Function to check password
+    const checkPassword = () => {
+      const password = document.getElementById('password-input').value.trim();
+      if (password === requiredPassword) {
+        document.getElementById('passwordModal').style.display = 'none';
+        document.body.classList.remove('modal-open');
+        document.querySelector('.modal-backdrop').remove();
+        return true;
+      } else {
+        alert("Incorrect password. Please try again.");
+        return false;
+      }
     };
 
-    const deleteFromStorage = (key, id) => {
-      let existing = JSON.parse(localStorage.getItem(key) || "[]");
-      existing = existing.filter(item => item.id !== id);
-      localStorage.setItem(key, JSON.stringify(existing));
+    // Event listener for password submission
+    document.getElementById('submitPassword').addEventListener('click', function () {
+      if (checkPassword()) {
+        loadPage();
+      }
+    });
+
+    // Close modal on 'Enter' key
+    document.getElementById('password-input').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        if (checkPassword()) {
+          loadPage();
+        }
+      }
+    });
+
+    // Function to load the page content after password is validated
+    const loadPage = () => {
+      const saveToStorage = (key, item) => {
+        const existing = JSON.parse(localStorage.getItem(key) || "[]");
+        existing.push(item);
+        localStorage.setItem(key, JSON.stringify(existing));
+      };
+
+      const deleteFromStorage = (key, id) => {
+        let existing = JSON.parse(localStorage.getItem(key) || "[]");
+        existing = existing.filter(item => item.id !== id);
+        localStorage.setItem(key, JSON.stringify(existing));
+        loadItems();
+      };
+
+      document.getElementById("tweet-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const text = document.getElementById("tweet-text").value.trim();
+        if (!text) return;
+        const newTweet = {
+          id: Date.now().toString(),
+          text,
+          date: new Date().toISOString(),
+          comments: []
+        };
+        saveToStorage("tweets", newTweet);
+        alert("Tweet posted successfully!");
+        this.reset();
+        loadItems();
+      });
+
+      document.getElementById("blog-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const title = document.getElementById("blog-title").value.trim();
+        const content = document.getElementById("blog-content").value.trim();
+        if (!title || !content) return;
+        const newPost = {
+          id: Date.now().toString(),
+          title,
+          content,
+          date: new Date().toISOString(),
+          comments: []
+        };
+        saveToStorage("blogs", newPost);
+        alert("Blog post published successfully!");
+        this.reset();
+        loadItems();
+      });
+
+      function loadItems() {
+        const tweets = JSON.parse(localStorage.getItem("tweets") || "[]");
+        const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
+
+        const tweetList = document.getElementById("tweet-list");
+        const blogList = document.getElementById("blog-list");
+
+        tweetList.innerHTML = tweets.slice(-5).reverse().map(tweet => `
+          <div class="posted-item">
+            <small>${new Date(tweet.date).toLocaleString()}</small>
+            ${tweet.text}
+            <button class="btn btn-sm btn-danger mt-2" onclick="deleteFromStorage('tweets', '${tweet.id}')">Delete</button>
+          </div>
+        `).join("");
+
+        blogList.innerHTML = blogs.slice(-5).reverse().map(post => `
+          <div class="posted-item">
+            <strong>${post.title}</strong>
+            <small>${new Date(post.date).toLocaleString()}</small>
+            <div>${post.content}</div>
+            <button class="btn btn-sm btn-danger mt-2" onclick="deleteFromStorage('blogs', '${post.id}')">Delete</button>
+          </div>
+        `).join("");
+      }
+
       loadItems();
     };
-
-    document.getElementById("tweet-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const text = document.getElementById("tweet-text").value.trim();
-      if (!text) return;
-      const newTweet = {
-        id: Date.now().toString(),
-        text,
-        date: new Date().toISOString(),
-        comments: []
-      };
-      saveToStorage("tweets", newTweet);
-      alert("Tweet posted successfully!");
-      this.reset();
-      loadItems();
-    });
-
-    document.getElementById("blog-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const title = document.getElementById("blog-title").value.trim();
-      const content = document.getElementById("blog-content").value.trim();
-      if (!title || !content) return;
-      const newPost = {
-        id: Date.now().toString(),
-        title,
-        content,
-        date: new Date().toISOString(),
-        comments: []
-      };
-      saveToStorage("blogs", newPost);
-      alert("Blog post published successfully!");
-      this.reset();
-      loadItems();
-    });
-
-    function loadItems() {
-      const tweets = JSON.parse(localStorage.getItem("tweets") || "[]");
-      const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
-
-      const tweetList = document.getElementById("tweet-list");
-      const blogList = document.getElementById("blog-list");
-
-      tweetList.innerHTML = tweets.slice(-5).reverse().map(tweet => `
-        <div class="posted-item">
-          <small>${new Date(tweet.date).toLocaleString()}</small>
-          ${tweet.text}
-          <button class="btn btn-sm btn-danger mt-2" onclick="deleteFromStorage('tweets', '${tweet.id}')">Delete</button>
-        </div>
-      `).join("");
-
-      blogList.innerHTML = blogs.slice(-5).reverse().map(post => `
-        <div class="posted-item">
-          <strong>${post.title}</strong>
-          <small>${new Date(post.date).toLocaleString()}</small>
-          <div>${post.content}</div>
-          <button class="btn btn-sm btn-danger mt-2" onclick="deleteFromStorage('blogs', '${post.id}')">Delete</button>
-        </div>
-      `).join("");
-    }
-
-    loadItems();
   </script>
 </body>
 
