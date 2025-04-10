@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin Page - Oyebanji Akins</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f8f9fa;
-      padding-top: 80px;
     }
 
     .navbar {
@@ -27,228 +24,173 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .admin-section h3 {
-      color: #5D4037;
-      margin-bottom: 20px;
+    .main-content {
+      display: none;
     }
 
-    .posted-items {
-      margin-top: 20px;
-    }
-
-    .posted-items h5 {
-      margin-bottom: 15px;
-      color: #333;
-    }
-
-    .posted-item {
-      padding: 15px;
-      margin-bottom: 10px;
-      border: 1px solid #ddd;
-      border-left: 5px solid #5D4037;
-      border-radius: 5px;
-      background-color: #fff;
-    }
-
-    .posted-item small {
-      display: block;
-      color: #888;
-      margin-bottom: 10px;
-    }
-
-    /* Modal Styles */
     .modal-backdrop {
       z-index: 9999;
     }
 
     .modal-content {
       border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
 
     .modal-header {
       background-color: #5D4037;
       color: white;
-      font-size: 1.25rem;
     }
 
     .modal-body {
       text-align: center;
     }
-
-    .modal-footer button {
-      width: 100%;
-    }
   </style>
 </head>
-
 <body>
-  <!-- Modal for Password -->
-  <div class="modal fade show" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel" aria-hidden="true" style="display: block;">
-    <div class="modal-dialog" role="document">
+  <!-- Password Modal -->
+  <div class="modal fade show" id="passwordModal" tabindex="-1" style="display: block;" aria-hidden="true">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="passwordModalLabel">Enter Admin Password</h5>
+          <h5 class="modal-title">Welcome, Admin</h5>
         </div>
         <div class="modal-body">
-          <input type="password" class="form-control" id="password-input" placeholder="Enter Password" autofocus>
+          <input type="password" id="password-input" class="form-control" placeholder="Enter admin password">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" id="submitPassword">Submit</button>
+          <button class="btn btn-danger w-100" id="submitPassword">Let me in</button>
         </div>
       </div>
     </div>
   </div>
 
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img class="img-fluid" src="images/logo.png" alt="Logo" />
-      </a>
-    </div>
-  </nav>
-
-  <div class="container">
-    <h2 class="text-center mb-5">Admin Dashboard</h2>
-
-    <div class="admin-section">
-      <h3>Post a Tweet</h3>
-      <form id="tweet-form">
-        <textarea class="form-control mb-2" placeholder="What's on your mind?" id="tweet-text" required></textarea>
-        <button type="submit" class="btn btn-dark">Post Tweet</button>
-      </form>
-
-      <div class="posted-items">
-        <h5>Your Tweets</h5>
-        <div id="tweet-list"></div>
+  <!-- Main Content -->
+  <div class="main-content">
+    <nav class="navbar navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Oyebanji Admin Panel</a>
       </div>
-    </div>
+    </nav>
 
-    <div class="admin-section">
-      <h3>Publish a Blog Post</h3>
-      <form id="blog-form">
-        <input class="form-control mb-2" placeholder="Title" id="blog-title" required />
-        <textarea class="form-control mb-2" placeholder="Content" id="blog-content" rows="5" required></textarea>
-        <button type="submit" class="btn btn-dark">Publish Blog</button>
-      </form>
+    <div class="container mt-5 pt-5">
+      <h2 class="text-center mb-5">Admin Dashboard</h2>
 
-      <div class="posted-items">
-        <h5>Your Blog Posts</h5>
-        <div id="blog-list"></div>
+      <div class="admin-section">
+        <h3>Post a Tweet</h3>
+        <form id="tweet-form">
+          <textarea class="form-control mb-2" id="tweet-text" placeholder="What's on your mind?" required></textarea>
+          <button type="submit" class="btn btn-dark">Post Tweet</button>
+        </form>
+        <div class="mt-3">
+          <h5>Recent Tweets</h5>
+          <div id="tweet-list"></div>
+        </div>
+      </div>
+
+      <div class="admin-section">
+        <h3>Publish a Blog</h3>
+        <form id="blog-form">
+          <input class="form-control mb-2" id="blog-title" placeholder="Blog title" required/>
+          <textarea class="form-control mb-2" id="blog-content" placeholder="Blog content" required></textarea>
+          <button type="submit" class="btn btn-dark">Publish</button>
+        </form>
+        <div class="mt-3">
+          <h5>Recent Blog Posts</h5>
+          <div id="blog-list"></div>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
-    const requiredPassword = "akins2025";
+    const correctPassword = "akins2025";
 
-    // Function to check password
+    const passwordModal = document.getElementById("passwordModal");
+    const mainContent = document.querySelector(".main-content");
+
     const checkPassword = () => {
-      const password = document.getElementById('password-input').value.trim();
-      if (password === requiredPassword) {
-        document.getElementById('passwordModal').style.display = 'none';
-        document.body.classList.remove('modal-open');
-        document.querySelector('.modal-backdrop').remove();
-        return true;
+      const input = document.getElementById("password-input").value;
+      if (input === correctPassword) {
+        passwordModal.style.display = "none";
+        document.body.classList.remove("modal-open");
+
+        const backdrop = document.querySelector(".modal-backdrop");
+        if (backdrop) backdrop.remove();
+
+        mainContent.style.display = "block";
+        loadPage();
       } else {
         alert("Incorrect password. Please try again.");
-        return false;
       }
     };
 
-    // Event listener for password submission
-    document.getElementById('submitPassword').addEventListener('click', function () {
-      if (checkPassword()) {
-        loadPage();
+    document.getElementById("submitPassword").addEventListener("click", checkPassword);
+    document.getElementById("password-input").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        checkPassword();
       }
     });
 
-    // Close modal on 'Enter' key
-    document.getElementById('password-input').addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') {
-        if (checkPassword()) {
-          loadPage();
-        }
-      }
-    });
-
-    // Function to load the page content after password is validated
-    const loadPage = () => {
-      const saveToStorage = (key, item) => {
+    function loadPage() {
+      function saveToStorage(key, item) {
         const existing = JSON.parse(localStorage.getItem(key) || "[]");
         existing.push(item);
         localStorage.setItem(key, JSON.stringify(existing));
+      }
+
+      window.deleteFromStorage = function (key, id) {
+        let items = JSON.parse(localStorage.getItem(key) || "[]");
+        items = items.filter(item => item.id !== id);
+        localStorage.setItem(key, JSON.stringify(items));
+        renderItems();
       };
 
-      const deleteFromStorage = (key, id) => {
-        let existing = JSON.parse(localStorage.getItem(key) || "[]");
-        existing = existing.filter(item => item.id !== id);
-        localStorage.setItem(key, JSON.stringify(existing));
-        loadItems();
-      };
+      function renderItems() {
+        const tweets = JSON.parse(localStorage.getItem("tweets") || "[]").slice(-5).reverse();
+        const blogs = JSON.parse(localStorage.getItem("blogs") || "[]").slice(-5).reverse();
 
+        document.getElementById("tweet-list").innerHTML = tweets.map(tweet => `
+          <div class="border p-2 mb-2">
+            <small>${new Date(tweet.date).toLocaleString()}</small><br/>
+            ${tweet.text}
+            <button class="btn btn-sm btn-danger mt-2" onclick="deleteFromStorage('tweets', '${tweet.id}')">Delete</button>
+          </div>
+        `).join("");
+
+        document.getElementById("blog-list").innerHTML = blogs.map(blog => `
+          <div class="border p-2 mb-2">
+            <strong>${blog.title}</strong><br/>
+            <small>${new Date(blog.date).toLocaleString()}</small>
+            <p>${blog.content}</p>
+            <button class="btn btn-sm btn-danger" onclick="deleteFromStorage('blogs', '${blog.id}')">Delete</button>
+          </div>
+        `).join("");
+      }
+
+      // Form submissions
       document.getElementById("tweet-form").addEventListener("submit", function (e) {
         e.preventDefault();
         const text = document.getElementById("tweet-text").value.trim();
-        if (!text) return;
-        const newTweet = {
-          id: Date.now().toString(),
-          text,
-          date: new Date().toISOString(),
-          comments: []
-        };
-        saveToStorage("tweets", newTweet);
-        alert("Tweet posted successfully!");
-        this.reset();
-        loadItems();
+        if (text) {
+          saveToStorage("tweets", { id: Date.now().toString(), text, date: new Date().toISOString() });
+          this.reset();
+          renderItems();
+        }
       });
 
       document.getElementById("blog-form").addEventListener("submit", function (e) {
         e.preventDefault();
         const title = document.getElementById("blog-title").value.trim();
         const content = document.getElementById("blog-content").value.trim();
-        if (!title || !content) return;
-        const newPost = {
-          id: Date.now().toString(),
-          title,
-          content,
-          date: new Date().toISOString(),
-          comments: []
-        };
-        saveToStorage("blogs", newPost);
-        alert("Blog post published successfully!");
-        this.reset();
-        loadItems();
+        if (title && content) {
+          saveToStorage("blogs", { id: Date.now().toString(), title, content, date: new Date().toISOString() });
+          this.reset();
+          renderItems();
+        }
       });
 
-      function loadItems() {
-        const tweets = JSON.parse(localStorage.getItem("tweets") || "[]");
-        const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
-
-        const tweetList = document.getElementById("tweet-list");
-        const blogList = document.getElementById("blog-list");
-
-        tweetList.innerHTML = tweets.slice(-5).reverse().map(tweet => `
-          <div class="posted-item">
-            <small>${new Date(tweet.date).toLocaleString()}</small>
-            ${tweet.text}
-            <button class="btn btn-sm btn-danger mt-2" onclick="deleteFromStorage('tweets', '${tweet.id}')">Delete</button>
-          </div>
-        `).join("");
-
-        blogList.innerHTML = blogs.slice(-5).reverse().map(post => `
-          <div class="posted-item">
-            <strong>${post.title}</strong>
-            <small>${new Date(post.date).toLocaleString()}</small>
-            <div>${post.content}</div>
-            <button class="btn btn-sm btn-danger mt-2" onclick="deleteFromStorage('blogs', '${post.id}')">Delete</button>
-          </div>
-        `).join("");
-      }
-
-      loadItems();
-    };
+      renderItems();
+    }
   </script>
 </body>
-
 </html>
