@@ -188,8 +188,10 @@
         </div>
       `).join("");
   
+      
       const blogList = document.getElementById("blog-post-list");
       blogList.innerHTML = blogs.length === 0 ? `<p class="no-data">No blog posts yet.</p>` : blogs.map(post => `
+      
         <div class="blog-post-card">
           <div class="blog-header">
             <div>
