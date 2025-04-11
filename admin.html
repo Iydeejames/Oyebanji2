@@ -5,17 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin Page - Oyebanji Akins</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
-  
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f8f9fa;
     }
-
     .navbar {
       background-color: #5D4037;
     }
-
     .admin-section {
       background-color: #ffffff;
       border: 2px solid #5D4037;
@@ -24,33 +21,26 @@
       margin-bottom: 30px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-
     .main-content {
       display: none;
     }
-
     .modal-backdrop {
       z-index: 9999;
     }
-
     .modal-content {
       border-radius: 10px;
     }
-
     .modal-header {
       background-color: #5D4037;
       color: white;
     }
-
     .modal-body {
       text-align: center;
     }
-
-    .blog-image, .tweet-image {
-      width: 100%;
-      height: auto;
-      max-width: 500px;
-      margin-bottom: 10px;
+    .preview-img {
+      max-width: 100px;
+      max-height: 100px;
+      margin: 5px;
     }
   </style>
 </head>
@@ -84,24 +74,24 @@
       <h2 class="text-center mb-5">Admin Dashboard</h2>
 
       <div class="admin-section">
-        <h3>Post a Tweet</h3>
-        <form id="tweet-form" enctype="multipart/form-data">
+        <h3>Post an Update</h3>
+        <form id="tweet-form">
           <textarea class="form-control mb-2" id="tweet-text" placeholder="What's on your mind?" required></textarea>
-          <input type="file" class="form-control mb-2" id="tweet-images" multiple />
-          <button type="submit" class="btn btn-dark">Post Tweet</button>
+          <input type="file" id="tweet-images" multiple accept="image/*" class="form-control mb-2" />
+          <button type="submit" class="btn btn-dark">Post Updates</button>
         </form>
         <div class="mt-3">
-          <h5>Recent Tweets</h5>
+          <h5>Recent Updates</h5>
           <div id="tweet-list"></div>
         </div>
       </div>
 
       <div class="admin-section">
         <h3>Publish a Blog</h3>
-        <form id="blog-form" enctype="multipart/form-data">
+        <form id="blog-form">
           <input class="form-control mb-2" id="blog-title" placeholder="Blog title" required/>
           <textarea class="form-control mb-2" id="blog-content" placeholder="Blog content" required></textarea>
-          <input type="file" class="form-control mb-2" id="blog-images" multiple />
+          <input type="file" id="blog-images" multiple accept="image/*" class="form-control mb-2" />
           <button type="submit" class="btn btn-dark">Publish</button>
         </form>
         <div class="mt-3">
@@ -114,7 +104,6 @@
 
   <script>
     const correctPassword = "akins2025";
-
     const passwordModal = document.getElementById("passwordModal");
     const mainContent = document.querySelector(".main-content");
 
@@ -123,10 +112,8 @@
       if (input === correctPassword) {
         passwordModal.style.display = "none";
         document.body.classList.remove("modal-open");
-
         const backdrop = document.querySelector(".modal-backdrop");
         if (backdrop) backdrop.remove();
-
         mainContent.style.display = "block";
         loadPage();
       } else {
@@ -136,10 +123,18 @@
 
     document.getElementById("submitPassword").addEventListener("click", checkPassword);
     document.getElementById("password-input").addEventListener("keypress", function (e) {
-      if (e.key === "Enter") {
-        checkPassword();
-      }
+      if (e.key === "Enter") checkPassword();
     });
+
+    // Utility to convert file to Base64
+    function convertToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
 
     function loadPage() {
       function saveToStorage(key, item) {
@@ -163,7 +158,7 @@
           <div class="border p-2 mb-2">
             <small>${new Date(tweet.date).toLocaleString()}</small><br/>
             ${tweet.text}
-            ${tweet.images ? tweet.images.map(image => `<img src="${image}" class="tweet-image" alt="Tweet Image"/>`).join("") : ""}
+            ${tweet.images?.map(src => `<img src="${src}" class="preview-img" />`).join("") || ""}
             <button class="btn btn-sm btn-danger mt-2" onclick="deleteFromStorage('tweets', '${tweet.id}')">Delete</button>
           </div>
         `).join("");
@@ -173,35 +168,49 @@
             <strong>${blog.title}</strong><br/>
             <small>${new Date(blog.date).toLocaleString()}</small>
             <p>${blog.content}</p>
-            ${blog.images ? blog.images.map(image => `<img src="${image}" class="blog-image" alt="Blog Image"/>`).join("") : ""}
+            ${blog.images?.map(src => `<img src="${src}" class="preview-img" />`).join("") || ""}
             <button class="btn btn-sm btn-danger" onclick="deleteFromStorage('blogs', '${blog.id}')">Delete</button>
           </div>
         `).join("");
       }
 
-      // Form submissions
-      document.getElementById("tweet-form").addEventListener("submit", function (e) {
+      // Tweet submission
+      document.getElementById("tweet-form").addEventListener("submit", async function (e) {
         e.preventDefault();
         const text = document.getElementById("tweet-text").value.trim();
         const files = document.getElementById("tweet-images").files;
-        const images = Array.from(files).map(file => URL.createObjectURL(file));
+
+        const images = await Promise.all(Array.from(files).map(file => convertToBase64(file)));
 
         if (text) {
-          saveToStorage("tweets", { id: Date.now().toString(), text, images, date: new Date().toISOString() });
+          saveToStorage("tweets", {
+            id: Date.now().toString(),
+            text,
+            images,
+            date: new Date().toISOString()
+          });
           this.reset();
           renderItems();
         }
       });
 
-      document.getElementById("blog-form").addEventListener("submit", function (e) {
+      // Blog submission
+      document.getElementById("blog-form").addEventListener("submit", async function (e) {
         e.preventDefault();
         const title = document.getElementById("blog-title").value.trim();
         const content = document.getElementById("blog-content").value.trim();
         const files = document.getElementById("blog-images").files;
-        const images = Array.from(files).map(file => URL.createObjectURL(file));
+
+        const images = await Promise.all(Array.from(files).map(file => convertToBase64(file)));
 
         if (title && content) {
-          saveToStorage("blogs", { id: Date.now().toString(), title, content, images, date: new Date().toISOString() });
+          saveToStorage("blogs", {
+            id: Date.now().toString(),
+            title,
+            content,
+            images,
+            date: new Date().toISOString()
+          });
           this.reset();
           renderItems();
         }
