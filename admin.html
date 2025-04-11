@@ -41,6 +41,9 @@
       max-width: 100px;
       max-height: 100px;
       margin: 5px;
+      object-fit: cover;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
   </style>
 </head>
@@ -74,11 +77,11 @@
       <h2 class="text-center mb-5">Admin Dashboard</h2>
 
       <div class="admin-section">
-        <h3>Post a Reviews</h3>
+        <h3>Post a Review</h3>
         <form id="tweet-form">
           <textarea class="form-control mb-2" id="tweet-text" placeholder="What's on your mind?" required></textarea>
           <input type="file" id="tweet-images" multiple accept="image/*" class="form-control mb-2" />
-          <button type="submit" class="btn btn-dark">Post Reviews</button>
+          <button type="submit" class="btn btn-dark">Post Review</button>
         </form>
         <div class="mt-3">
           <h5>Recent Updates</h5>
@@ -126,7 +129,6 @@
       if (e.key === "Enter") checkPassword();
     });
 
-    // Utility to convert file to Base64
     function convertToBase64(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -151,35 +153,34 @@
       };
 
       function renderItems() {
-        const tweets = JSON.parse(localStorage.getItem("tweets") || "[]").slice(-5).reverse();
-        const blogs = JSON.parse(localStorage.getItem("blogs") || "[]").slice(-5).reverse();
+        const tweets = JSON.parse(localStorage.getItem("tweets") || "[]").reverse();
+        const blogs = JSON.parse(localStorage.getItem("blogs") || "[]").reverse();
 
         document.getElementById("tweet-list").innerHTML = tweets.map(tweet => `
-          <div class="border p-2 mb-2">
+          <div class="border p-2 mb-3">
             <small>${new Date(tweet.date).toLocaleString()}</small><br/>
-            ${tweet.text}
+            <p>${tweet.text}</p>
             ${tweet.images?.map(src => `<img src="${src}" class="preview-img" />`).join("") || ""}
             <button class="btn btn-sm btn-danger mt-2" onclick="deleteFromStorage('tweets', '${tweet.id}')">Delete</button>
           </div>
         `).join("");
 
         document.getElementById("blog-list").innerHTML = blogs.map(blog => `
-          <div class="border p-2 mb-2">
+          <div class="border p-2 mb-3">
             <strong>${blog.title}</strong><br/>
             <small>${new Date(blog.date).toLocaleString()}</small>
             <p>${blog.content}</p>
             ${blog.images?.map(src => `<img src="${src}" class="preview-img" />`).join("") || ""}
-            <button class="btn btn-sm btn-danger" onclick="deleteFromStorage('blogs', '${blog.id}')">Delete</button>
+            <button class="btn btn-sm btn-danger mt-2" onclick="deleteFromStorage('blogs', '${blog.id}')">Delete</button>
           </div>
         `).join("");
       }
 
-      // Tweet submission
+      // Tweet Submission
       document.getElementById("tweet-form").addEventListener("submit", async function (e) {
         e.preventDefault();
         const text = document.getElementById("tweet-text").value.trim();
         const files = document.getElementById("tweet-images").files;
-
         const images = await Promise.all(Array.from(files).map(file => convertToBase64(file)));
 
         if (text) {
@@ -194,13 +195,12 @@
         }
       });
 
-      // Blog submission
+      // Blog Submission
       document.getElementById("blog-form").addEventListener("submit", async function (e) {
         e.preventDefault();
         const title = document.getElementById("blog-title").value.trim();
         const content = document.getElementById("blog-content").value.trim();
         const files = document.getElementById("blog-images").files;
-
         const images = await Promise.all(Array.from(files).map(file => convertToBase64(file)));
 
         if (title && content) {
